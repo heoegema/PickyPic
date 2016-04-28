@@ -34,15 +34,13 @@
     </div>
   </div>
 </nav>
-<% @posts.each do |post| %>
-  <div class="row">
-    <%= link_to (image_tag post.image.url(:medium)), post_path(post) %>
-    <p>
-      <%= post.caption %>
-    </p>
-  </div>
-<% end %>
-<%= yield %>
+<div class="container">
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+  <% end %>
+  <%= yield %>
+</div>
+
 
 </body>
 </html>
